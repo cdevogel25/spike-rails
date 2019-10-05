@@ -1,7 +1,8 @@
-<%= form_with(model [ @house, @house.comments.build ], local: true) do |form| %>
+<%= form_with(model: [ @house, @house.comments.build ], local: true) do |form| %>
+<% if current_user %>
 <p>
     <%= form.label :commenter%><br>
-    <%= form.text_field :commenter%>
+    <%= form.text_field :commenter, :value => current_user.email, :readonly => true%>
 </p>
 <p>
     <%= form.label :body%>
@@ -10,4 +11,5 @@
 <p>
     <%= form.submit%>
 </p>
+<%end%>
 <%end%>

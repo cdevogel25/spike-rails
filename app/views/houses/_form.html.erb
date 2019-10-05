@@ -42,8 +42,21 @@
         <%= form.label :description %><br>
         <%= form.text_area :description%>
     </p>
+    
+    <p>
+        <% if current_user %>
+            <%= form.label :owner %><br>
+            <%= form.text_field :owner, :value => current_user.email, :readonly => true%>
+        <% end %>
+    </p>
 
     <p>
-        <%= form.submit %>
+        <% if current_user %>
+            <%= form.submit %>
+        <% else %>
+            <p>Unregistered users cannot create houses.</p>
+            <%= link_to 'Sign Up', signup_path %> or
+            <%= link_to 'Sign In', login_path %>
+        <% end %>
     </p>
 <% end %>

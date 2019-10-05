@@ -1,4 +1,4 @@
-<h1>Available Houses</h1>
+<h1>My Houses</h1>
 
 <table>
     <tr>
@@ -9,11 +9,11 @@
     
     <% @houses.each do |house| %>
     <tr>
+        <% if current_user.email == house.owner %>
         <td><%= house.address %></td>
         <td>$<%= house.monthly_rent %></td>
         <td><%= house.available_date %></td>
         <td><%= link_to 'Show', house_path(house) %></td>
-        <% if current_user && current_user.email == house.owner %>
         <td><%= link_to 'Edit', edit_house_path(house) %></td>
         <td><%= link_to 'Delete', house_path(house),
                 method: :delete,
@@ -22,9 +22,3 @@
     </tr>
     <% end %>
 </table>
-
-<%= link_to 'New House', new_house_path %>
-<% if current_user %>
-<%= link_to 'My Houses', mine_path %>
-<% end %>
-<%= link_to 'Home', controller: 'home' %>

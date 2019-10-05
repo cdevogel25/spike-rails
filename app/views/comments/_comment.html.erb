@@ -8,7 +8,9 @@
 </p>
 
 <p>
-    <%= link_to 'Delete Comment', [comment.article, comment],
-                method :delete,
+    <% if current_user && current_user.email == comment.commenter %>
+    <%= link_to 'Delete Comment', [comment.house, comment],
+                method: :delete,
                 data: { confirm: 'Are you sure?' }%>
+    <% end %>
 </p>

@@ -43,9 +43,18 @@ class HousesController < ApplicationController
         redirect_to houses_path
     end
 
+    def identify_user
+        @user = current_user.email
+    end
+
+    def mine
+        @houses = House.all
+    end
+
     private
         def house_params
+
             params.require(:house).permit(:address, :available_date,
-            :monthly_rent, :rooms_available, :current_occupants, :description)
+            :monthly_rent, :rooms_available, :current_occupants, :description, :owner)
         end
 end

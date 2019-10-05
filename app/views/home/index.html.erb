@@ -10,3 +10,7 @@
 
 <h1>UW - Live Well!</h1>
 <%= link_to "Available Houses", controller: "houses" %>
+
+<% if current_user %>
+<%= link_to 'Profile', controller: 'profile' %>
+<% end %>
