@@ -1,4 +1,6 @@
 class House < ApplicationRecord
+    include Filterable
+    
     has_many :comments, dependent: :destroy
 
     validates :address, presence: true
