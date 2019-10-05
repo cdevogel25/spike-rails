@@ -1,4 +1,6 @@
 class House < ApplicationRecord
+    has_many :comments, dependent: :destroy
+
     validates :address, presence: true
     validates :available_date, presence: true
     validates :monthly_rent, presence: true
